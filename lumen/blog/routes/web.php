@@ -1,7 +1,9 @@
 <?php
-
+ 
 /** @var \Laravel\Lumen\Routing\Router $router */
-
+ 
+ 
+use Illuminate\Support\Str;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -12,7 +14,19 @@
 | and give it the Closure to call when that URI is requested.
 |
 */
-
+ 
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+ 
+$router->get('/key', function() { //la función del video no me anduvo 
+    return Str::random(32);		//esta si
+});
+
+/*
+$router->get('/user', function(){
+    return "Hola mundo señor Lumen!!!";
+});
+*/
+
+$router->get('/users',['uses'=> 'UsersController@index']);
